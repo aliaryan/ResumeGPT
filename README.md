@@ -48,7 +48,7 @@ python main.py
 ## Limitations
 
 1. As the tool uses the OpenAI API, you will need a valid API key which might have associated costs.
-2.The current version supports resumes in PDF format only.
+2. The current version supports resumes in PDF format only.
 
 ## Contributing
 
