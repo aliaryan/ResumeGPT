@@ -1,8 +1,8 @@
-##About
+## About
 
 Resume GPT is an efficient recruitment assistant powered by OpenAI's GPT-3.5. The tool allows recruiters to upload multiple resumes along with a job description. You can further specify mandatory keywords that should be present in a candidate's resume. As a result, the tool will provide an evaluation of each resume against the provided job description and give insights into the suitability of the candidate for the role.
 
-##Features
+## Features
 
 - Bulk upload of resumes in PDF format.
 - Specification of a job description to compare the resumes against.
@@ -10,13 +10,13 @@ Resume GPT is an efficient recruitment assistant powered by OpenAI's GPT-3.5. Th
 - Analysis of resumes using OpenAI GPT-3.5 to generate suitability remarks.
 - Downloadable results in a CSV format with columns for resume name, comments, and suitability.
 
-##Requirements
+## Requirements
 - Flask
 - OpenAI Python Client
 - pdfplumber
 - CSV module
 
-##Setup
+## Setup
 
 1. Clone the repository.
 ```
@@ -36,7 +36,7 @@ pip install Flask openai pdfplumber
 python main.py
 ```
 
-##Usage
+## Usage
 
 1. Access the tool by visiting http://localhost:5000 in your browser.
 2. Upload the desired resumes.
@@ -45,15 +45,17 @@ python main.py
 5. Click on "Submit" to get the analysis.
 6. You can then download the results in a CSV format.
 
-##Limitations
+## Limitations
 
 1. As the tool uses the OpenAI API, you will need a valid API key which might have associated costs.
 2.The current version supports resumes in PDF format only.
 
-##Contributing
+## Contributing
 
 Feel free to submit pull requests, raise issues, or give feedback. Your contributions are welcome!
 
-##License
+## If you find this tool useful, please give us a ⭐! Starring the repository supports the project and encourages further development.
+
+## License
 
 This project is open source and available under the MIT License.
