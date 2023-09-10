@@ -35,7 +35,7 @@ pip install Flask openai pdfplumber
 4. Update the OpenAI API key in the openai.api_key = "OPEN AI KEY" line with your own key.
 5. Run the application.
 ```
-python main.py
+python screening_tool.py
 ```
 
 ## Usage
