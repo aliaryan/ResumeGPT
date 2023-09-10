@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>AI-Powered Resume Screening Tool</title>
+    <style>
+      .loader {
+        border: 12px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 12px solid #3498db;
+        width: 30px;
+        height: 30px;
+        animation: spin 2s linear infinite;
+        display: none;
+      }
+
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Upload Resume and Job Description</h1>
+    <form id="uploadForm" enctype="multipart/form-data">
+      <p><input type="file" name="file[]" multiple required></p>
+      <p><textarea name="job_description" placeholder="Job Description" required></textarea></p>
+      <p><input type="text" name="mandatory_keywords" placeholder="Mandatory Keywords" required></p>
+      <p><button type="submit">Submit</button></p>
+      <p><button id="downloadCSV" type="button" style="display: none;">Download CSV</button></p>
+      <div class="loader" id="loadingSpinner"></div>
+    </form>
+    <h2>Results</h2>
+    <table id="resultsTable">
+      <thead>
+        <tr>
+          <th>Resume Name</th>
+          <th>Comments</th>
+          <th>Suitability</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+    <script>
+      document.getElementById('uploadForm').addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        document.getElementById('loadingSpinner').style.display = 'inline-block';
+
+        const formData = new FormData(e.target);
+        const response = await fetch('/upload', {
+          method: 'POST',
+          body: formData
+        });
+
+        document.getElementById('loadingSpinner').style.display = 'none';
+
+        if (response.ok) {
+          const json = await response.json();
+          const table = document.getElementById('resultsTable').getElementsByTagName('tbody')[0];
+
+          table.innerHTML = '';  // Clear existing table rows
+
+          // Add new table rows with the results
+          json.results.forEach(result => {
+            const newRow = table.insertRow();
+            newRow.insertCell().innerText = result[0];
+            newRow.insertCell().innerText = result[1];
+            newRow.insertCell().innerText = result[2];
+          });
+
+          document.getElementById('downloadCSV').style.display = 'inline';
+        } else {
+          console.error('Failed to fetch results', response);
+        }
+      });
+
+      document.getElementById("downloadCSV").addEventListener("click", function() {
+        window.location.href = "/download_csv?timestamp=" + new Date().getTime();
+      });
+    </script>
+  </body>
+</html>
