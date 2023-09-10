@@ -1,3 +1,5 @@
+## ResumeGPT: An AI Driven Resume Screening Tool
+
 ## About
 
 Resume GPT is an efficient recruitment assistant powered by OpenAI's GPT-3.5. The tool allows recruiters to upload multiple resumes along with a job description. You can further specify mandatory keywords that should be present in a candidate's resume. As a result, the tool will provide an evaluation of each resume against the provided job description and give insights into the suitability of the candidate for the role.
